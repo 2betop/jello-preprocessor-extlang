@@ -18,13 +18,17 @@
 
                 #script
                         require.async("home:static/ui/B/B.js");
-                        console.log('here');
-                        __inline("./a.js")
+                        __inline("./a.js");
+                        require('a.js');
+                        var gif = __uri('images/logo.gif');
                 #end
 
                 #style
-                        @import('./a.css');
-
+                        @import url('./a.css');
+                        @import url('a.css?__inline');
+                        /**
+                         * @require a.css
+                         */                
                 #end
 
                 #if($msg) 
@@ -35,16 +39,6 @@
 
                 #foreach( $info in $hotList1) 
                     <a href="/bbsdoc.ejf?easyJWebCommand=show&&cid=$!info.cid" target="_blank">$!info.title</a><br> 
-                #end 
-
-                #foreach ($element in $list)        
-                        ## inner foreach 内循环        
-                        #foreach ($element in $list)        
-                        `This is $element. $velocityCount <br>inner<br>       
-                        #end        
-                        ## inner foreach 内循环结束        
-                        ## outer foreach     
-                        This is $element.     $velocityCount <br>outer<br>   
                 #end 
 
         #end

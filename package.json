@@ -1,0 +1,23 @@
+{
+  "name": "fis-preprocessor-extVelocity",
+  "version": "0.0.1",
+  "description": "fis-preprocessor-extVelocity",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lily-zhangying/fis-preprocessor-extVelocity.git"
+  },
+  "keywords": [
+    "fis"
+  ],
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*",
+    "fis":"*"
+  },
+  "author": "lily-zhangying",
+  "license": "MIT"
+}

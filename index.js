@@ -70,7 +70,7 @@ function extCss(content, map){
         } else if(filter) {
             m = 'src=' + map.uri.ld + filter + map.uri.rd;
         } else if(comment) {
-            m = analyseComment(comment);
+            m = analyseComment(comment, map);
         }
         return m;
     };
@@ -82,9 +82,9 @@ function extHtml(content, map, conf) {
     var reg = new RegExp('('+label+'\\bscript\\b)([\\s\\S]*?)(?='+label+'\\bend\\b|$)|('+label+'\\bstyle\\b)([\\s\\S]*?)(?='+label+'\\bend\\b|$)', 'ig');    
     return content.replace(reg, function(m, $1, $2, $3, $4){
         if($1) {
-            m = extJs($2, map);
+            m = $1 + extJs($2, map);
         } else if($3) {
-            m = extCss($4, map);
+            m = $3 + extCss($4, map);
         }
         return m;
     });
@@ -92,7 +92,6 @@ function extHtml(content, map, conf) {
 
 module.exports = function(content, file, conf){
     label = pregQuote('#');
-    var end_label = pregQuote('#\bend\b');
     if(file.isHtmlLike){
         return extHtml(content, fis.compile.lang, conf);
     }
