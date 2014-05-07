@@ -16,14 +16,14 @@
 
                 ## 通过script插件收集加载组件化JS代码
 
-                #script
+                #script()
                         require.async("home:static/ui/B/B.js");
                         <<<embed:"./a.js">>>;
                         require(<<<require:'a.js'>>>);
                         var gif = <<<uri:'images/logo.gif'>>>;
                 #end
 
-                #style
+                #style ($info in $hotList1)
                         @import url(<<<uri:'./a.css'>>>);
                         <<<embed:'a.css?__inline'>>>
                         /**

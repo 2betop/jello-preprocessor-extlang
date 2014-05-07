@@ -79,7 +79,7 @@ function extCss(content, map){
 
 
 function extHtml(content, map, conf) {
-    var reg = new RegExp('('+label+'\\bscript\\b)([\\s\\S]*?)(?='+label+'\\bend\\b|$)|('+label+'\\bstyle\\b)([\\s\\S]*?)(?='+label+'\\bend\\b|$)', 'ig');    
+    var reg = new RegExp('('+label+'\\bscript\\b\\s*\\([\\s\\S]*?\\))([\\s\\S]*?)(?='+label+'\\bend\\b|$)|('+label+'\\bstyle\\b\\s*\\([\\s\\S]*?\\))([\\s\\S]*?)(?='+label+'\\bend\\b|$)', 'ig');    
     return content.replace(reg, function(m, $1, $2, $3, $4){
         if($1) {
             m = $1 + extJs($2, map);
