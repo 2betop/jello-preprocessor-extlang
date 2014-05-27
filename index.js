@@ -79,7 +79,6 @@ function extCss(content, map){
 
 
 function extHtml(content, map, conf) {
-    var reg = new RegExp('('+label+'\\bscript\\b\\s*\\([\\s\\S]*?\\))([\\s\\S]*?)(?='+label+'\\bend\\b|$)|('+label+'\\bstyle\\b\\s*\\([\\s\\S]*?\\))([\\s\\S]*?)(?='+label+'\\bend\\b|$)', 'ig');    
     var labelParser = require('fis-velocity-label-parser');
     ret = labelParser(content, conf);
     var content_new = fis.util.clone(content);
