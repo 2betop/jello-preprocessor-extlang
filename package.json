@@ -13,6 +13,9 @@
   "keywords": [
     "fis"
   ],
+  "dependencies" : {
+    "fis-velocity-label-parser":"0.0.2"
+  },
   "devDependencies": {
     "chai": "*",
     "mocha": "*",
