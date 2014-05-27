@@ -80,14 +80,22 @@ function extCss(content, map){
 
 function extHtml(content, map, conf) {
     var reg = new RegExp('('+label+'\\bscript\\b\\s*\\([\\s\\S]*?\\))([\\s\\S]*?)(?='+label+'\\bend\\b|$)|('+label+'\\bstyle\\b\\s*\\([\\s\\S]*?\\))([\\s\\S]*?)(?='+label+'\\bend\\b|$)', 'ig');    
-    return content.replace(reg, function(m, $1, $2, $3, $4){
-        if($1) {
-            m = $1 + extJs($2, map);
-        } else if($3) {
-            m = $3 + extCss($4, map);
+    var labelParser = require('fis-velocity-label-parser');
+    ret = labelParser(content, conf);
+    var content_new = fis.util.clone(content);
+    fis.util.map(ret, function(k, v){
+        if(v.start_label == '#script'){
+            var js_before = content.substring(v.content_start_index, v.content_end_index);
+            var js_after = extJs(js_before, map);
+            content_new = content_new.replace(js_before, js_after);
+        }else if(v.start_label == '#style'){
+            var css_before = content.substring(v.content_start_index, v.content_end_index);
+            var css_after = extCss(css_before, map);
+            content_new = content_new.replace(css_before, css_after);
         }
-        return m;
+
     });
+    return content_new;
 }
 
 module.exports = function(content, file, conf){

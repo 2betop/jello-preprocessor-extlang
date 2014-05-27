@@ -16,7 +16,8 @@
   "devDependencies": {
     "chai": "*",
     "mocha": "*",
-    "fis":"*"
+    "fis":"*",
+    "fis-velocity-label-parser":"*"
   },
   "author": "lily-zhangying",
   "license": "MIT"

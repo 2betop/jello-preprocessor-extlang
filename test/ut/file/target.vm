@@ -21,6 +21,15 @@
                         <<<embed:"./a.js">>>;
                         require(<<<require:'a.js'>>>);
                         var gif = <<<uri:'images/logo.gif'>>>;
+                        
+                        ##script标签内有嵌套
+
+                        #if($msg) 
+                        <script> 
+                                alert('$!msg'); 
+                        </script> 
+                        #end 
+
                 #end
 
                 #style ($info in $hotList1)
@@ -29,6 +38,15 @@
                         /**
                          * @require <<<require:a.css>>>
                          */
+
+                         ##style标签内有嵌套
+
+                        #if($msg) 
+                        <script> 
+                                alert('$!msg'); 
+                        </script> 
+                        #end 
+                        
                 #end
 
                 #if($msg)

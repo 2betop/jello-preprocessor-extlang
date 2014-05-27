@@ -21,6 +21,16 @@
                         __inline("./a.js");
                         require('a.js');
                         var gif = __uri('images/logo.gif');
+
+
+                        ##script标签内有嵌套
+
+                        #if($msg) 
+                        <script> 
+                                alert('$!msg'); 
+                        </script> 
+                        #end 
+
                 #end
 
                 #style($info in $hotList1)
@@ -28,7 +38,17 @@
                         @import url('a.css?__inline');
                         /**
                          * @require a.css
-                         */                
+                         */ 
+
+
+                        ##style标签内有嵌套
+
+                        #if($msg) 
+                        <script> 
+                                alert('$!msg'); 
+                        </script> 
+                        #end 
+
                 #end
 
                 #if($msg) 
