@@ -1,4 +1,4 @@
-#html("home:static/lib/mod.js")
+﻿#html("home:static/lib/mod.js")
         #head
                 <meta charset="utf-8"/>
 
@@ -20,6 +20,9 @@
                         require.async("home:static/ui/B/B.js");
                         __inline("./a.js");
                         require('a.js');
+                         /**
+                         * @require a.js
+                         */
                         var gif = __uri('images/logo.gif');
 
 
@@ -39,12 +42,16 @@
                         /**
                          * @require a.css
                          */ 
-
+                        #uri('a.css');
+                        body {
+                            color : #fff;
+                            background:url('a.css');
+                        }
 
                         ##style标签内有嵌套
 
                         #if($msg) 
-                        <script> 
+                        <script src='a.css'>
                                 alert('$!msg'); 
                         </script> 
                         #end 
