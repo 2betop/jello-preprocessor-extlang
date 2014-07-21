@@ -1,4 +1,4 @@
-#html("home:static/lib/mod.js")
+﻿#html("home:static/lib/mod.js")
         #head
                 <meta charset="utf-8"/>
 
@@ -20,6 +20,9 @@
                         require.async("home:static/ui/B/B.js");
                         <<<embed:"./a.js">>>;
                         require(<<<require:'a.js'>>>);
+                        /**
+                        *@require<<<require:a.js>>>
+                        */
                         var gif = <<<uri:'images/logo.gif'>>>;
                         
                         ##script标签内有嵌套
@@ -38,11 +41,12 @@
                         /**
                          * @require <<<require:a.css>>>
                          */
-
+                         #uri('a.css');
+                         body{color:#fff;background:url(<<<uri:'a.css'>>>);}
                          ##style标签内有嵌套
 
                         #if($msg) 
-                        <script> 
+                        <script src=<<<uri:'a.css'>>> >
                                 alert('$!msg'); 
                         </script> 
                         #end 
