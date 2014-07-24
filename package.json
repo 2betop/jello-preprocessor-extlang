@@ -1,6 +1,6 @@
 {
   "name": "jello-preprocessor-extlang",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "fis-preprocessor-extVelocity",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "fis"
   ],
   "dependencies" : {
-    "fis-velocity-label-parser":"0.0.3"
+    "fis-velocity-label-parser":"0.0.4"
   },
   "devDependencies": {
     "chai": "*",
