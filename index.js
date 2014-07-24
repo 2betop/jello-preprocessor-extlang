@@ -80,7 +80,7 @@ function extCss(content, map){
 
 function extHtml(content, map, conf) {
     var labelParser = require('fis-velocity-label-parser');
-    ret = labelParser(content, conf);
+    var ret = labelParser(content, conf);
     var content_new = fis.util.clone(content);
     fis.util.map(ret, function(k, v){
         if(v.start_label == '#script'){
