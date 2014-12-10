@@ -94,7 +94,22 @@ function extHtml(content, map, conf) {
         }
 
     });
-    return content_new;
+    return extVM(content_new, map, conf);
+}
+
+function extVM(content, map, conf) {
+    var reg = /(#\*[\s\S]*?(?:\*#|$)|##[^\n\r\f]*)|(?:#(require|extends)\s*\(\s*('|")(.*?)\3\s*\))/ig;
+    var callback = function(m, comment, directive, quote, url) {
+        if (url) {
+            m = '#' + directive + '('+  map.require.ld + quote + url + quote + map.require.rd +')';
+        } else if(comment) {
+            m = analyseComment(comment, map);
+        }
+
+        return m;
+    };
+
+    return content.replace(reg, callback);
 }
 
 module.exports = function(content, file, conf){

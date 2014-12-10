@@ -1,6 +1,6 @@
 {
   "name": "jello-preprocessor-extlang",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "fis-preprocessor-extVelocity",
   "main": "index.js",
   "scripts": {
