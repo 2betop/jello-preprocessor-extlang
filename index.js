@@ -98,10 +98,10 @@ function extHtml(content, map, conf) {
 }
 
 function extVM(content, map, conf) {
-    var reg = /(#\*[\s\S]*?(?:\*#|$)|##[^\n\r\f]*)|(?:#(require|extends)\s*\(\s*('|")(.*?)\3\s*\))/ig;
+    var reg = /(#\*[\s\S]*?(?:\*#|$)|##[^\n\r\f]*)|(?:#(require|extends|widget|html)\s*\(\s*('|")(.*?)\3)/ig;
     var callback = function(m, comment, directive, quote, url) {
         if (url) {
-            m = '#' + directive + '('+  map.require.ld + quote + url + quote + map.require.rd +')';
+            m = '#' + directive + '('+  map.id.ld + quote + url + quote + map.id.rd;
         } else if(comment) {
             m = analyseComment(comment, map);
         }
@@ -115,6 +115,21 @@ function extVM(content, map, conf) {
 module.exports = function(content, file, conf){
     label = pregQuote('#');
     if(file.isHtmlLike){
-        return extHtml(content, fis.compile.lang, conf);
+
+        // 扩展 id 用法
+        var map = fis.compile.lang;
+        var key = 'id';
+        var LD = '<<<', RD = '>>>';
+
+        map[key] = {
+            ld: LD + key + ':',
+            rd: RD
+        };
+
+        return extHtml(content, fis.compile.lang, conf)
+            .replace(/\<\<\<id\:([\s\S]+?)\>\>\>/ig, function(_, value) {
+                var info = fis.uri.getId(value, file.dirname);
+                return info.quote + info.id + info.quote;
+            });
     }
 }
