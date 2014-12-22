@@ -129,7 +129,12 @@ module.exports = function(content, file, conf){
         return extHtml(content, fis.compile.lang, conf)
             .replace(/\<\<\<id\:([\s\S]+?)\>\>\>/ig, function(_, value) {
                 var info = fis.uri.getId(value, file.dirname);
-                return info.quote + info.id + info.quote;
+
+                if (info.file) {
+                    return info.quote + info.id + info.quote;
+                }
+
+                return value;
             });
     }
 }
