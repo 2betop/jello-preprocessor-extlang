@@ -104,6 +104,10 @@ function extJsp(content, map, conf) {
                         break;
 
                     default:
+                        if (attr === 'require') {
+                            return attr + '=' + map.require.ld + quote + value + quote + map.require.rd;
+                        }
+
                         return attr + '=' + map.id.ld + quote + value + quote + map.id.rd;
                 }
             });

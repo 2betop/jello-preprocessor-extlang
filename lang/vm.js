@@ -100,7 +100,9 @@ function extHtml(content, map, conf) {
 function extVM(content, map, conf) {
     var reg = /(#\*[\s\S]*?(?:\*#|$)|##[^\n\r\f]*)|(?:#(require|extends|widget|html|uri|script|style)\s*\(\s*('|")(.*?)\3)/ig;
     var callback = function(m, comment, directive, quote, url) {
-        if (url) {
+        if (directive === 'require') {
+            m = '#' + directive + '('+  map.require.ld + quote + url + quote + map.require.rd;
+        } else if (url) {
             m = '#' + directive + '('+  map.id.ld + quote + url + quote + map.id.rd;
         } else if(comment) {
             m = analyseComment(comment, map);
