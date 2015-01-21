@@ -73,7 +73,7 @@ function extCss(content, map){
 
 
 function extHtml(content, map, conf) {
-    var reg = /<%--(?!\[)([\s\S]*?)(?:-->|$)|(<fis\:script(?:(?=\s)[\s\S]*?["'\s\w\/\-]>|>))([\s\S]*?)(?=<\/fis\:script\s*>|$)|(<fis\:style(?:(?=\s)[\s\S]*?["'\s\w\/\-]>|>))([\s\S]*?)(?=<\/fis\:style\s*>|$)/ig;
+    var reg = /(<%--(?!\[)[\s\S]*?(?:--%>|$))|(<fis\:script(?:(?=\s)[\s\S]*?["'\s\w\/\-]>|>))([\s\S]*?)(?=<\/fis\:script\s*>|$)|(<fis\:style(?:(?=\s)[\s\S]*?["'\s\w\/\-]>|>))([\s\S]*?)(?=<\/fis\:style\s*>|$)/ig;
     var callback = function(m, comment, script, scriptbody, style, stylebody) {
         if (script) {
             m = script + extJs(scriptbody, map);
@@ -91,7 +91,7 @@ function extHtml(content, map, conf) {
 }
 
 function extJsp(content, map, conf) {
-    var reg = /<%--(?!\[)([\s\S]*?)(?:-->|$)|<fis\:(html|widget|extends|require|uri|script|style)([^>]+)/ig;
+    var reg = /(<%--(?!\[)[\s\S]*?(?:--%>|$))|<fis\:(html|widget|extends|require|uri|script|style)([^>]+)/ig;
     var callback = function(m, comment, type, attributes) {
         if(comment) {
             m = analyseComment(comment, map);
