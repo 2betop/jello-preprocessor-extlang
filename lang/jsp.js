@@ -96,7 +96,7 @@ function extJsp(content, map, conf) {
         if(comment) {
             m = analyseComment(comment, map);
         } else {
-            m = m.replace(/(name|framework|src|href)=('|")(.*?)\2/ig, function(_, attr, quote, value) {
+            m = m.replace(/(id|name|framework|src|href)=('|")(.*?)\2/ig, function(_, attr, quote, value) {
                 switch (attr) {
                     case 'src':
                     case 'href':
